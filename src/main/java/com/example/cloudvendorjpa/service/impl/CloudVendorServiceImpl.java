@@ -43,4 +43,7 @@ public class CloudVendorServiceImpl implements CloudVendorService {
     public List<CloudVendor> getAll() {
         return cloudVendorRepository.findAll();
     }
+
+
+
 }
