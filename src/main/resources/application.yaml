@@ -1,13 +1,10 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/cloud-vendor?useSSL=false
+    url: jdbc:mariadb://localhost:3306/cloud-vendor
     username: root
     password:
 
-
-
-#jpa config
-
-jpa:
-  hibernate:
-    ddl-auto: create
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create

@@ -4,7 +4,6 @@ import com.example.cloudvendorjpa.model.CloudVendor;
 import com.example.cloudvendorjpa.repository.CloudVendorRepository;
 import com.example.cloudvendorjpa.service.CloudVendorService;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service

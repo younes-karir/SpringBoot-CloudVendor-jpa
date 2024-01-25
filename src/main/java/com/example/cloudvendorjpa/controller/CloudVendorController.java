@@ -1,5 +1,6 @@
 package com.example.cloudvendorjpa.controller;
 import com.example.cloudvendorjpa.model.CloudVendor;
+import com.example.cloudvendorjpa.service.CloudVendorService;
 import org.springframework.web.bind.annotation.*;
 import java.util.Vector;
 
@@ -13,10 +14,16 @@ import java.util.Vector;
 public class CloudVendorController {
     Vector<CloudVendor> data = new Vector<CloudVendor>();
 
+    // Cloud vendor service
 
+    CloudVendorService cloudVendorService;
+
+    public CloudVendorController(CloudVendorService cloudVendorService) {
+        this.cloudVendorService = cloudVendorService;
+    }
 
     @GetMapping("{id}")
-    public CloudVendor GetItem(@PathVariable long id){
+    public CloudVendor GetItem(@PathVariable("id") long id){
         for (CloudVendor item: data) {
             if(item.getVendorId() == id)
                 return item;
@@ -26,9 +33,7 @@ public class CloudVendorController {
 
 
     @PostMapping
-    public String addItem (@RequestBody CloudVendor item){
-        if(data.add(item)) return "item added with success"; else return "Error";
-    }
+    public String addItem (@RequestBody CloudVendor item){return cloudVendorService.createCloudVendor(item);}
 
 
 
