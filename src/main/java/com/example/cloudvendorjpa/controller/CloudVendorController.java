@@ -20,7 +20,8 @@ public class CloudVendorController {
     }
 
     @PostMapping
-    public String addItem (@RequestBody CloudVendor item){return cloudVendorService.createCloudVendor(item);}
+    public String addItem (@RequestBody CloudVendor item){ return cloudVendorService.createCloudVendor(item);}
+
 
 
     @GetMapping("")
