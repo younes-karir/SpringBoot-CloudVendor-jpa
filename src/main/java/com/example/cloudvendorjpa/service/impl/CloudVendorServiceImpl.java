@@ -1,5 +1,6 @@
 package com.example.cloudvendorjpa.service.impl;
 
+import com.example.cloudvendorjpa.exception.CloudVendorNotFoundException;
 import com.example.cloudvendorjpa.model.CloudVendor;
 import com.example.cloudvendorjpa.repository.CloudVendorRepository;
 import com.example.cloudvendorjpa.service.CloudVendorService;
@@ -35,6 +36,9 @@ public class CloudVendorServiceImpl implements CloudVendorService {
 
     @Override
     public CloudVendor getCloudVendor(long id) {
+        // handling not found exception
+        if(cloudVendorRepository.findById(id).isEmpty())
+            throw  new CloudVendorNotFoundException("vendor not found");
         return cloudVendorRepository.findById(id).get();
     }
 

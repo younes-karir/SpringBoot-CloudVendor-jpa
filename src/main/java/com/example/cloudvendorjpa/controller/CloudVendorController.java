@@ -20,17 +20,18 @@ public class CloudVendorController {
     }
 
     @PostMapping
-    public String addItem (@RequestBody CloudVendor item){ return cloudVendorService.createCloudVendor(item);}
+    public String createCloudVendor (@RequestBody CloudVendor item){
+        return cloudVendorService.createCloudVendor(item);
+    }
 
-
-
-    @GetMapping("")
+    @GetMapping
     public List<CloudVendor> getAll(){
         return cloudVendorService.getAll();
     }
 
     @GetMapping("{id}")
     public CloudVendor getCloudVendor (@PathVariable long id){
+
         return cloudVendorService.getCloudVendor(id);
     }
 
