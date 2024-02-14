@@ -1,23 +1,24 @@
 package com.example.cloudvendorjpa.controller;
 import com.example.cloudvendorjpa.model.CloudVendor;
+import com.example.cloudvendorjpa.response.ResponseHandler;
 import com.example.cloudvendorjpa.service.CloudVendorService;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Vector;
 
 @RestController
+@AllArgsConstructor
 @RequestMapping("/cloud-vendor")
 public class CloudVendorController {
-    Vector<CloudVendor> data = new Vector<CloudVendor>();
 
     // Cloud vendor service
-
     CloudVendorService cloudVendorService;
 
-    public CloudVendorController(CloudVendorService cloudVendorService) {
-        this.cloudVendorService = cloudVendorService;
-    }
 
     @PostMapping
     public String createCloudVendor (@RequestBody CloudVendor item){
@@ -25,14 +26,22 @@ public class CloudVendorController {
     }
 
     @GetMapping
-    public List<CloudVendor> getAll(){
-        return cloudVendorService.getAll();
+    public ResponseEntity<Object> getAll(){
+        return ResponseHandler.responseBuilder(
+                "vendor list",
+                HttpStatus.OK,
+                cloudVendorService.getAll()
+        );
     }
 
     @GetMapping("{id}")
-    public CloudVendor getCloudVendor (@PathVariable long id){
+    public ResponseEntity<Object> getCloudVendor (@PathVariable long id){
 
-        return cloudVendorService.getCloudVendor(id);
+        return ResponseHandler.responseBuilder(
+                "requested vendor details are given here ",
+                HttpStatus.OK,
+                cloudVendorService.getCloudVendor(id)
+        );
     }
 
     @PutMapping
