@@ -2,8 +2,10 @@ package com.example.cloudvendorjpa.model;
 
 
 import jakarta.persistence.*;
+import lombok.Builder;
 
 @Entity
+@Builder
 @Table(name = "vendors")
 public class CloudVendor {
 

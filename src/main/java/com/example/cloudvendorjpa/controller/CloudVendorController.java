@@ -21,8 +21,13 @@ public class CloudVendorController {
 
 
     @PostMapping
-    public String createCloudVendor (@RequestBody CloudVendor item){
-        return cloudVendorService.createCloudVendor(item);
+    public ResponseEntity<Object>  createCloudVendor (@RequestBody CloudVendor item){
+        return ResponseHandler.responseBuilder(
+                "vendor list",
+                HttpStatus.CREATED,
+                cloudVendorService.createCloudVendor(item)
+        );
+
     }
 
     @GetMapping
