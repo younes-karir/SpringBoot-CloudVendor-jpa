@@ -40,7 +40,7 @@ public class CloudVendorController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Object> getCloudVendor (@PathVariable long id){
+    public ResponseEntity<Object> getCloudVendor (@PathVariable String id){
 
         return ResponseHandler.responseBuilder(
                 "requested vendor details are given here ",
@@ -56,7 +56,7 @@ public class CloudVendorController {
 
 
     @DeleteMapping("{id}")
-    public String deleteCloudVendor (@PathVariable long id){
+    public String deleteCloudVendor (@PathVariable String id){
         return cloudVendorService.deleteCloudVendor(id);
     }
 

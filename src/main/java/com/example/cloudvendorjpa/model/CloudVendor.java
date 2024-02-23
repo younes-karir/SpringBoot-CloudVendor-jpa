@@ -8,61 +8,52 @@ import lombok.Builder;
 @Builder
 @Table(name = "vendors")
 public class CloudVendor {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long  VendorId;
-
-    @Column(name = "name")
-    private String VendorName;
-
-    @Column(name = "address")
-    private String VendorAddress;
-
-    @Column(name = "phone-number")
-    private String VendorPhoneNumber;
-
+    private String vendorId;
+    private String vendorName;
+    private String vendorAddress;
+    private String vendorPhoneNumber;
 
     public CloudVendor() {
     }
 
-    public CloudVendor(long vendorId, String vendorName, String vendorAddress, String vendorPhoneNumber) {
-        VendorId = vendorId;
-        VendorName = vendorName;
-        VendorAddress = vendorAddress;
-        VendorPhoneNumber = vendorPhoneNumber;
+    public CloudVendor(String vendorId, String vendorName, String vendorAddress, String vendorPhoneNumber) {
+        this.vendorId = vendorId;
+        this.vendorName = vendorName;
+        this.vendorAddress = vendorAddress;
+        this.vendorPhoneNumber = vendorPhoneNumber;
     }
 
-    public long getVendorId() {
-        return VendorId;
+    public String getVendorId() {
+        return vendorId;
+    }
+
+    public void setVendorId(String vendorId) {
+        this.vendorId = vendorId;
     }
 
     public String getVendorName() {
-        return VendorName;
-    }
-
-    public String getVendorAddress() {
-        return VendorAddress;
-    }
-
-    public String getVendorPhoneNumber() {
-        return VendorPhoneNumber;
-    }
-
-    public void setVendorId(long vendorId) {
-        VendorId = vendorId;
+        return vendorName;
     }
 
     public void setVendorName(String vendorName) {
-        VendorName = vendorName;
+        this.vendorName = vendorName;
+    }
+
+    public String getVendorAddress() {
+        return vendorAddress;
     }
 
     public void setVendorAddress(String vendorAddress) {
-        VendorAddress = vendorAddress;
+        this.vendorAddress = vendorAddress;
+    }
+
+    public String getVendorPhoneNumber() {
+        return vendorPhoneNumber;
     }
 
     public void setVendorPhoneNumber(String vendorPhoneNumber) {
-        VendorPhoneNumber = vendorPhoneNumber;
+        this.vendorPhoneNumber = vendorPhoneNumber;
     }
 }
+

@@ -29,13 +29,13 @@ public class CloudVendorServiceImpl implements CloudVendorService {
     }
 
     @Override
-    public String deleteCloudVendor(long id) {
+    public String deleteCloudVendor(String id) {
         cloudVendorRepository.deleteById(id);
         return "Success";
     }
 
     @Override
-    public CloudVendor getCloudVendor(long id) {
+    public CloudVendor getCloudVendor(String id) {
         // handling not found exception
         if(cloudVendorRepository.findById(id).isEmpty())
             throw  new CloudVendorNotFoundException("vendor not found");
