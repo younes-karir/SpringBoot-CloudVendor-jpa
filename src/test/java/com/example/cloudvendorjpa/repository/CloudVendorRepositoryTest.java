@@ -13,6 +13,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 import java.util.Optional;
 
+
+import static org.assertj.core.api.Assertions.*;
+
 @DataJpaTest
 public class CloudVendorRepositoryTest {
 
@@ -33,6 +36,13 @@ public class CloudVendorRepositoryTest {
                 .build();
         cloudVendorRepository.save(cloudVendor);
     }
+
+    @AfterEach
+    void tearDown() {
+        cloudVendor= null;
+        cloudVendorRepository.deleteAll();
+    }
+
     // test case success
 
 
@@ -40,15 +50,18 @@ public class CloudVendorRepositoryTest {
     void testFindVendorByName_Found()
     {
        List<CloudVendor> vendorList = cloudVendorRepository.findAllByVendorName("younes");
-        System.out.println(vendorList.get(0).getVendorName());
+        assertThat(vendorList.get(0).getVendorId()).isEqualTo(cloudVendor.getVendorId());
+        assertThat(vendorList.getFirst().getVendorName()).isEqualTo(cloudVendor.getVendorName());
     }
 
 
     // test case failure
-    @AfterEach
-    void tearDown() {
-        cloudVendor= null;
-        cloudVendorRepository.deleteAll();
+
+
+    @Test
+    void testFindVendorByName_NotFound(){
+        List<CloudVendor> vendorList = cloudVendorRepository.findAllByVendorName("khalid");
+        assertThat(vendorList.isEmpty()).isFalse();
     }
 
 
