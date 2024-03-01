@@ -55,6 +55,12 @@ public class CloudVendorController {
     }
 
 
+    @GetMapping("/test")
+    public String Hello(){  
+        return "hallo zusammen";
+    }
+
+
     @DeleteMapping("{id}")
     public String deleteCloudVendor (@PathVariable String id){
         return cloudVendorService.deleteCloudVendor(id);
